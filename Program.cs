@@ -15,6 +15,18 @@ namespace ErodrSharp
         {
             parameters = new SimParams
             {
+#if PAPER
+                N = 10000,
+                Ttl = 64,
+                PRadius = 2,
+                PEnertia = 0.3f,
+                PCapacity = 8f,
+                PGravity = -10f,
+                PEvaporation = 0.02f,
+                PErosion = 0.7f,
+                PDeposition = 1f,
+                PMinSlope = 0.01f
+#else
                 N = 70000,
                 Ttl = 30,
                 PRadius = 2,
@@ -25,6 +37,7 @@ namespace ErodrSharp
                 PErosion = 0.1f,
                 PDeposition = 1f,
                 PMinSlope = 0.0001f
+#endif
             };
 
             inputFilePath = string.Empty;

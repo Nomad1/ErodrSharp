@@ -78,7 +78,13 @@ namespace ErodrSharp
                     }
 
                     float sqVel = p.Vel * p.Vel + hDiff * parameters.PGravity;
-                    p.Vel = sqVel < 0 ? float.MaxValue : MathF.Sqrt(sqVel);
+#if PAPER
+                    if (sqVel <= 0)
+                        break;
+#else
+                    sqVel = float.MaxValue;
+#endif
+                    p.Vel = MathF.Sqrt(sqVel);
                     p.Water *= (1f - parameters.PEvaporation);
                 }
 
